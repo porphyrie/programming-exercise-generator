@@ -1,0 +1,28 @@
+﻿{
+  "parameters": {
+    "generator": {
+      "minLineCount": "6",
+      "maxLineCount": "24",
+      "minUniqueness": "0.75",
+      "templatePath": "C:\\Users\\dpili\\source\\repos\\GrammarTest\\GrammarTest\\Templates\\StackTemplate.cpp",
+      "question": "Fie vf un pointer catre varful urmatoarei stive: {#INLOCUIESTE#}. Care va fi continutul stivei, la listare, in urma executiei functiei de mai jos?",
+      "patternToReplaceInQuestion": "#INLOCUIESTE#",
+      "patternToDetectHypothesisContent": "#INAINTE#",
+      "patternToDetectCorrectAnswer": "#DUPA#"
+    },
+    "syntaxTree": {
+      "grammarPath": "C:\\Users\\dpili\\source\\repos\\GrammarTest\\GrammarTest\\Grammars\\StackGrammar.json",
+      "startSymbol": "function"
+    }
+  },
+  "dependencies": {
+    "clang-format": {
+      "path": "C:\\Program Files\\LLVM\\bin\\clang-format.exe",
+      "args": "-style=\"{ IndentWidth: 4 }\""
+    },
+    "g++": {
+      "path": "g++.exe",
+      "args": ""
+    }
+  }
+}

@@ -1,0 +1,166 @@
+﻿{
+  "globaldecls": [
+    [ "nod", "*", "vf" ]
+  ],
+  "function": [
+    [ "void", "genereaza_output", "(", ")", "{", "decls", "stmts", "}" ]
+  ],
+  "decls": [
+    [ "decl#nod" ],
+    [ "decl#nod", "decl#int" ],
+    [ "decl#nod", "decl#int", "decl#int" ]
+  ],
+  "decl#int": [
+    [ "int", "s", "=", "rand(0,0)", ";" ],
+    [ "int", "i", "=", "rand(0,0)", ";" ],
+    [ "int", "aux", "=", "rand(0,0)", ";" ]
+  ],
+  "decl#nod": [
+    [ "nod", "*", "p", "=", "vf", ";" ],
+    [ "nod", "*", "q", "=", "vf", ";" ]
+  ],
+  "stmts": [
+    [ "whilestmt" ],
+    [ "whilestmt", "insertion" ],
+    [ "whilestmt", "deletion" ],
+    [ "whilestmt", "stmt#middle", "whilestmt" ]
+  ],
+  "whilestmt": [
+    [ "while", "(", "expr#while", ")", "{", "block", "musthaveloopstmt", "}" ],
+    [ "while", "(", "expr#while", ")", "{", "musthaveloopstmt", "deletion", "}" ]
+  ],
+  "ifstmt": [
+    [ "if", "(", "expr#if", ")", "stmt#usual" ],
+    [ "if", "(", "expr#if", ")", "stmt#usual", "else", "stmt#usual" ]
+  ],
+  "musthaveloopstmt": [
+    [ "p", "=", "p->prec", ";" ],
+    [ "q", "=", "q->prec", ";" ]
+  ],
+  "stmt#usual": [
+    [ "s", "+=", "p->n", ";" ],
+    [ "s", "+=", "vf->n", ";" ],
+    [ "s", "*=", "p->n", ";" ],
+    [ "i", "+=", "p->n", ";" ],
+    [ "i", "+=", "vf->n", ";" ],
+    [ "i", "*=", "p->n", ";" ],
+    [ "aux", "+=", "p->n", ";" ],
+    [ "aux", "+=", "vf->n", ";" ],
+    [ "aux", "*=", "p->n", ";" ],
+    [ "s", "+=", "aux", "%", "rand(10,10)", ";" ],
+    [ "s", "+=", "i", "%", "rand(10,10)", ";" ],
+    [ "i", "+=", "aux", "%", "rand(10,10)", ";" ],
+    [ "i", "+=", "s", "%", "rand(10,10)", ";" ],
+    [ "aux", "+=", "i", "%", "rand(10,10)", ";" ],
+    [ "aux", "+=", "s", "%", "rand(10,10)", ";" ],
+    [ "p->n", "+=", "rand(2,3)", ";" ],
+    [ "q->n", "+=", "rand(2,3)", ";" ],
+    [ "p->n", "*=", "rand(2,3)", ";" ],
+    [ "q->n", "*=", "rand(2,3)", ";" ]
+  ],
+  "stmt#middle": [
+    [ "p", "=", "vf", ";" ],
+    [ "q", "=", "vf", ";" ]
+  ],
+  "block": [
+    [ "stmt#usual" ],
+    [ "stmt#usual", "ifstmt" ],
+    [ "insertion" ]
+  ],
+  "insertion": [
+    [ "decl#insert", "stmt#insert" ]
+  ],
+  "decl#insert": [
+    [ "nod", "*", "u", "=", "new", "nod", ";" ]
+  ],
+  "stmt#insert": [
+    [ "u->n", "=", "rand(0,9)", ";", "u->prec", "=", "vf", ";", "vf", "=", "u", ";" ]
+  ],
+  "deletion": [
+    [ "decl#delete", "stmt#delete" ]
+  ],
+  "decl#delete": [
+    [ "nod", "*", "v", "=", "vf", ";" ]
+  ],
+  "stmt#delete": [
+    [ "vf", "=", "vf->prec", ";", "delete", "v", ";" ]
+  ],
+  "expr#while": [
+    [ "simpleexpr" ],
+    [ "p->prec", "&&", "(", "complexexpr", ")" ],
+    [ "q->prec", "&&", "(", "complexexpr", ")" ]
+  ],
+  "expr#if": [
+    [ "modulo", "==", "rand(0,1)" ],
+    [ "modulo", "!=", "rand(0,1)" ],
+    [ "operand", "!=", "nodrange" ]
+  ],
+  "simpleexpr": [
+    [ "p" ],
+    [ "q" ],
+    [ "p->prec" ],
+    [ "q->prec" ]
+  ],
+  "complexexpr": [
+    [ "operand", "<", "operation#1" ],
+    [ "operand", "<=", "operation#1" ],
+    [ "operand", ">=", "operation#2" ],
+    [ "operand", ">", "operation#2" ],
+    [ "operation#2", "<", "operand" ],
+    [ "operation#2", "<=", "operand" ],
+    [ "operation#1", ">=", "operand" ],
+    [ "operation#1", ">", "operand" ],
+    [ "operand", "<", "vf->n" ],
+    [ "operation", "<", "nodrange" ],
+    [ "operation", "<=", "nodrange" ],
+    [ "operation", ">=", "nodrange" ],
+    [ "operation", ">", "nodrange" ]
+  ],
+  "nodrange": [
+    [ "rand(0,9)" ]
+  ],
+  "operation": [
+    [ "operation#1" ],
+    [ "operation#2" ]
+  ],
+  "operation#1": [
+    [ "operand", "+", "operand" ],
+    [ "operand", "*", "operand" ]
+  ],
+  "operation#2": [
+    [ "operand", "/", "rand(2,3)" ]
+  ],
+  "modulo": [
+    [ "operand", "%", "rand(2,3)" ]
+  ],
+  "operand": [
+    [ "p->n" ],
+    [ "p->prec->n" ],
+    [ "q->n" ],
+    [ "q->prec->n" ]
+  ],
+  "terminals": [
+    [ "symbols", "operators", "keywords", "types", "identifiers", "codeblocks", "other" ]
+  ],
+  "symbols": [
+    [ "{", "}", "(", ")", ";" ]
+  ],
+  "operators": [
+    [ ">=", "<=", ">", "<", "==", "!=", "&&", "||", "+=", "-=", "*=", "/=", "++", "--", "+", "-", "*", "/", "%", "=", "<<" ]
+  ],
+  "keywords": [
+    [ "if", "else", "do", "while", "NULL", "new", "delete", "cout" ]
+  ],
+  "types": [
+    [ "void", "int", "nod" ]
+  ],
+  "identifiers": [
+    [ "p", "q", "s", "i", "aux", "genereaza_output", "vf", "u", "v" ]
+  ],
+  "codeblocks": [
+    [ "p->n", "p->prec->n", "p->prec", "q->n", "q->prec->n", "q->prec", "vf->n", "vf->prec", "u->n", "u->prec->n", "u->prec", "v->n", "v->prec->n", "v->prec" ]
+  ],
+  "other": [
+
+  ]
+}

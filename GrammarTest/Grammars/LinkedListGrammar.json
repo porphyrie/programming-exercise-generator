@@ -1,0 +1,147 @@
+﻿{
+  "function": [
+    [ "void", "genereaza_output", "(", ")", "{", "decls", "stmts", "prints", "}" ]
+  ],
+  "decls": [
+    [ "noddecl" ],
+    [ "noddecl", "intdecl" ],
+    [ "noddecl", "intdecl", "intdecl" ]
+  ],
+  "intdecl": [
+    [ "int", "s", "=", "rand(0,1)", ";" ],
+    [ "int", "i", "=", "rand(0,1)", ";" ],
+    [ "int", "aux", "=", "rand(0,0)", ";" ]
+  ],
+  "noddecl": [
+    [ "nod", "*", "p", "=", "prim", ";" ],
+    [ "nod", "*", "p", "=", "ultim", ";" ],
+    [ "nod", "*", "q", "=", "ultim", ";" ]
+  ],
+  "stmts": [
+    [ "whilestmt" ],
+    [ "whilestmt", "stmt#1" ],
+    [ "whilestmt", "whilestmt" ],
+    [ "whilestmt", "insert" ],
+    [ "whilestmt", "delete" ],
+    [ "whilestmt", "stmt#1", "whilestmt" ],
+    [ "whilestmt", "stmt#2", "whilestmt" ]
+  ],
+  "whilestmt": [
+    [ "while", "(", "expr", ")", "musthaveloopstmt" ],
+    [ "while", "(", "expr", ")", "{", "stmt#1", "musthaveloopstmt", "}" ],
+    [ "while", "(", "expr", ")", "{", "block", "musthaveloopstmt", "}" ]
+  ],
+  "ifstmt": [
+    [ "if", "(", "expr", ")", "stmt#1" ],
+    [ "if", "(", "expr", ")", "{", "block", "}" ],
+    [ "if", "(", "expr", ")", "stmt#1", "else", "stmt#1" ],
+    [ "if", "(", "expr", ")", "stmt#1", "else", "{", "block", "}" ],
+    [ "if", "(", "expr", ")", "{", "block", "}", "else", "stmt#1" ]
+  ],
+  "stmt#1": [
+    [ "s", "+=", "p->n", ";" ],
+    [ "s", "+=", "prim->n", ";" ],
+    [ "s", "*=", "p->n", ";" ],
+    [ "s", "+=", "p->n", "+", "q->n", ";" ],
+    [ "s", "+=", "aux", "%", "rand(10,10)", ";" ],
+    [ "p->n", "+=", "rand(2,3)", ";" ],
+    [ "q->n", "+=", "rand(2,3)", ";" ]
+  ],
+  "stmt#2": [
+    [ "p", "=", "prim", ";" ],
+    [ "q", "=", "prim", ";" ]
+  ],
+  "block": [
+    [ "stmt#1", "ifstmt" ],
+    [ "insert" ],
+    [ "delete" ]
+  ],
+  "insert": [
+    [ "inserare", ";" ]
+  ],
+  "delete": [
+    [ "stergere", ";" ]
+  ],
+  "musthaveloopstmt": [
+    [ "p", "=", "p->prev", ";" ],
+    [ "q", "=", "q->prev", ";" ],
+    [ "p", "=", "p->prev->prev", ";" ],
+    [ "q", "=", "q->prev->prev", ";" ],
+    [ "s", "++", ";" ],
+    [ "i", "++", ";" ],
+    [ "s", "--", ";" ],
+    [ "i", "--", ";" ],
+    [ "aux", "/=", "rand(2,2)", ";" ]
+  ],
+  "expr": [
+    [ "p" ],
+    [ "p->prev" ],
+    [ "modulo", "==", "rand(0,1)" ],
+    [ "modulo", "!=", "rand(0,1)" ]
+  ],
+  "extr": [
+    [ "operand", "<", "operation" ],
+    [ "operand", "<=", "operation" ],
+    [ "operand", ">=", "operation" ],
+    [ "operand", ">", "operation" ],
+    [ "operation", "<", "operand" ],
+    [ "operation", "<=", "operand" ],
+    [ "operation", ">=", "operand" ],
+    [ "operation", ">", "operand" ],
+    [ "operand", "<", "prim->n" ],
+    [ "operand", "<", "ultim->n" ]
+  ],
+  "extra": [
+    [ "operand", "!=", "nodlista" ],
+    [ "operation", "<", "nodlista" ],
+    [ "operation", "<=", "nodlista" ],
+    [ "operation", ">=", "nodlista" ],
+    [ "operation", ">", "nodlista" ]
+  ],
+  "operation": [
+    [ "operand", "+", "operand" ],
+    [ "operand", "*", "operand" ],
+    [ "operand", "/", "rand(2,3)" ],
+    [ "operand" ]
+  ],
+  "modulo": [
+    [ "operand", "%", "rand(2,3)" ]
+  ],
+  "operand": [
+    [ "p->n" ],
+    [ "p->prev->n" ],
+    [ "q->n" ],
+    [ "q->prev->n" ]
+  ],
+  "prints": [
+
+  ],
+  "terminals": [
+    [ "symbols", "operators", "keywords", "types", "identifiers", "codeblocks", "other" ]
+  ],
+  "symbols": [
+    [ "{", "}", "(", ")", ";" ]
+  ],
+  "operators": [
+    [ ">=", "<=", ">", "<", "==", "!=", "&&", "||", "+=", "-=", "*=", "/=", "++", "--", "+", "-", "*", "/", "%", "=" ]
+  ],
+  "keywords": [
+    [ "if", "else", "do", "while", "NULL" ]
+  ],
+  "types": [
+    [ "void", "int", "nod" ]
+  ],
+  "identifiers": [
+    [ "p", "q", "s", "i", "j", "aux", "genereaza_output" ]
+  ],
+  "codeblocks": [
+    [ "p->n", "q->n", "p->prev->n", "q->prev->n", "p->prev", "q->prev", "p->prev->prev", "q->prev->prev", "prim->n", "ultim->n" ]
+  ],
+  "other": [
+    [ "prim", "ultim", "inserare", "stergere", "nodlista" ]
+  ],
+  "globaldecls": [
+    [ "nod", "*", "prim" ],
+    [ "nod", "*", "ultim" ]
+  ]
+}
